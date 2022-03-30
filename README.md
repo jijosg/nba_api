@@ -21,3 +21,5 @@ curl -XGET -m 30 https://stats.nba.com/stats/leaguegamefinder/\?PlayerOrTeam\='T
 
 gunzip nba_data.gz
 ```
+
+More to come..
