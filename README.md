@@ -1,4 +1,4 @@
-# nba_api
+# ![](favicon.png) nba_api
 Create a nba api in golang
 
 This is the first draft and got the api to work finally 😆
