@@ -1,31 +1,25 @@
 # ![](favicon.png) nba_api
 Create a nba api in golang
 
-This is the first draft and got the api to work finally 😆
-## Querying stats.nba.com
-Finding league games for celtics
-```bash
-curl -XGET -m 30 https://stats.nba.com/stats/leaguegamefinder/\?PlayerOrTeam\='T'\&\&TeamID\=1610612738 \
--H "Accept: application/json, text/plain, */*" \
--H "Accept-Encoding: gzip, deflate, br" \
--H "x-nba-stats-origin: stats" \
--H "x-nba-stats-token: true" \
--H "Host: stats.nba.com" \
--H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0" \
--H "Connection: keep-alive" \
--H "Referer: https://stats.nba.com/" \
--H "Pragma: no-cache" \
--H "Cache-Control: no-cache" \
--H "Accept-Language: en-US,en;q=0.5" \
---output nba_data.gz
+This is the first draft and got the api to work finally :smile:
 
-gunzip nba_data.gz
+## TODO :notebook_with_decorative_cover:
+- Release binary
+- Add more endpoints
+- Refine the existing api calls
+- Better cli interface and help commands
+
+## Build locally :arrow_forward:
+
 ```
-
-## Check latest scores
+git clone https://github.com/jijosg/nba_api.git && cd nba_api
+go build .
+sudo mv nba_api /usr/local/bin/
+```
+## Check latest scores :rocket:
 
 ```bash
-> go run main.go score 
+> nba_api score 
 200 OK
 1. 20220331/PHIDET 3 Final 102 94
 2. 20220331/CLEATL 3 Final 131 107
@@ -33,7 +27,8 @@ gunzip nba_data.gz
 4. 20220331/LACCHI 3 Final/OT 135 130
 5. 20220331/LALUTA 3 Final 122 109
 ```
-## List the NBA teams
+## List the NBA teams :basketball: :notebook:
+
 ```bash
 > go run main.go list 
 list called
@@ -69,3 +64,26 @@ TEAM_ID     ABBREVIATION  NICKNAME      YEAR_FOUNDED  CITY           FULLNAME   
 1610612762  UTA           Jazz          1974          Utah           Utah Jazz               Utah
 1610612764  WAS           Wizards       1961          Washington     Washington Wizards      District of Columbia
 ```
+
+## Querying stats.nba.com
+Finding league games for celtics
+```bash
+curl -XGET -m 30 https://stats.nba.com/stats/leaguegamefinder/\?PlayerOrTeam\='T'\&\&TeamID\=1610612738 \
+-H "Accept: application/json, text/plain, */*" \
+-H "Accept-Encoding: gzip, deflate, br" \
+-H "x-nba-stats-origin: stats" \
+-H "x-nba-stats-token: true" \
+-H "Host: stats.nba.com" \
+-H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0" \
+-H "Connection: keep-alive" \
+-H "Referer: https://stats.nba.com/" \
+-H "Pragma: no-cache" \
+-H "Cache-Control: no-cache" \
+-H "Accept-Language: en-US,en;q=0.5" \
+--output nba_data.gz
+
+gunzip nba_data.gz
+```
+
+## References
+https://github.com/swar/nba_api
