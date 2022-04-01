@@ -1,5 +1,5 @@
-# ![](favicon.png) nba_api
-[![.github/workflows/release.yml](https://github.com/jijosg/nba_api/actions/workflows/release.yml/badge.svg)](https://github.com/jijosg/nba_api/actions/workflows/release.yml) [![Go](https://github.com/jijosg/nba_api/actions/workflows/go.yml/badge.svg)](https://github.com/jijosg/nba_api/actions/workflows/go.yml)
+# nba_api [![.github/workflows/release.yml](https://github.com/jijosg/nba_api/actions/workflows/release.yml/badge.svg)](https://github.com/jijosg/nba_api/actions/workflows/release.yml) [![Go](https://github.com/jijosg/nba_api/actions/workflows/go.yml/badge.svg)](https://github.com/jijosg/nba_api/actions/workflows/go.yml)
+
 Create a nba api in golang
 
 This is the first draft and got the api to work finally :smile:
