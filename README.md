@@ -22,6 +22,17 @@ curl -XGET -m 30 https://stats.nba.com/stats/leaguegamefinder/\?PlayerOrTeam\='T
 gunzip nba_data.gz
 ```
 
+## Check latest scores
+
+```bash
+> go run main.go score 
+200 OK
+1. 20220331/PHIDET 3 Final 102 94
+2. 20220331/CLEATL 3 Final 131 107
+3. 20220331/MILBKN 3 Final/OT 119 120
+4. 20220331/LACCHI 3 Final/OT 135 130
+5. 20220331/LALUTA 3 Final 122 109
+```
 ## List the NBA teams
 ```bash
 > go run main.go list 

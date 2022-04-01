@@ -1,4 +1,4 @@
-package pkg
+package teams
 
 type Teams struct {
 	Id               int

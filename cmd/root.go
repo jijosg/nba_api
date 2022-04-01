@@ -21,7 +21,7 @@ import (
 	"github.com/spf13/cobra"
 
 	"github.com/spf13/viper"
-	"github.com/jijosg/nba_api/pkg"
+	"github.com/jijosg/nba_api/pkg/teams"
 )
 
 var cfgFile string
@@ -33,7 +33,7 @@ var rootCmd = &cobra.Command{
 	Long: `League game finder`,
 	Run: func(cmd *cobra.Command, args []string) { 
 		team:= viper.GetString("team")
-		for _,i:=range(pkg.NBATeams){
+		for _,i:=range(teams.NBATeams){
 			if i.Abbreviation == team {
 				fmt.Println(i.FullName)
 			}

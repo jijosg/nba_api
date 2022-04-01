@@ -19,7 +19,7 @@ import (
 	"fmt"
 
 	"github.com/spf13/cobra"
-	"github.com/jijosg/nba_api/pkg"
+	"github.com/jijosg/nba_api/pkg/teams"
 )
 
 // listCmd represents the list command
@@ -30,9 +30,10 @@ var listCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("list called")
 		fmt.Printf("%-12s%-14s%-14s%-14s%-15s%-24s%s\n","TEAM_ID","ABBREVIATION","NICKNAME","YEAR_FOUNDED","CITY","FULLNAME","STATE")
-		for _, i := range pkg.NBATeams {
+		for _, i := range teams.NBATeams {
 			fmt.Printf("%-12d%-14s%-14s%-14d%-15s%-24s%s\n",i.Id,i.Abbreviation,i.Nickname,i.YearFounded,i.City,i.FullName,i.State)
 		}
+		
 	},
 }
 
