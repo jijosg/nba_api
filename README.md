@@ -20,12 +20,19 @@ sudo mv nba_api /usr/local/bin/
 
 ```bash
 > nba_api score 
-200 OK
-1. 20220331/PHIDET 3 Final 102 94
-2. 20220331/CLEATL 3 Final 131 107
-3. 20220331/MILBKN 3 Final/OT 119 120
-4. 20220331/LACCHI 3 Final/OT 135 130
-5. 20220331/LALUTA 3 Final 122 109
+No. Home Team     Away Team     Game Status Scores   
+1   Celtics       Wizards       Final       144 - 102
+2   Bucks         Mavericks     Final       112 - 118
+3   Lakers        Nuggets       Final       118 - 129
+4   Pacers        Pistons       Final       117 - 121
+5   Cavaliers     76ers         Final       108 - 112
+6   Magic         Knicks        Final       88  - 118
+7   Raptors       Heat          Final       109 - 114
+8   Rockets       Timberwolves  Final       132 - 139
+9   Thunder       Suns          Final       117 -  96
+10  Spurs         Trail Blazers Final       113 -  92
+11  Kings         Warriors      Final       90  - 109
+12  Clippers      Pelicans      Final       119 - 100
 ```
 ## List the NBA teams :basketball: :notebook:
 

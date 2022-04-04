@@ -16,12 +16,13 @@ limitations under the License.
 package cmd
 
 import (
+	"encoding/json"
 	"fmt"
-	"github.com/spf13/cobra"
 	"io/ioutil"
 	"net/http"
-	"encoding/json"
+
 	"github.com/jijosg/nba_api/pkg/teams"
+	"github.com/spf13/cobra"
 )
 
 // scoreCmd represents the score command
@@ -42,13 +43,13 @@ var scoreCmd = &cobra.Command{
 			return
 		}
 
-		req.Header.Set("Accept-Encoding","identity")
+		req.Header.Set("Accept-Encoding", "identity")
 		req.Header.Add("Content-Type", "application/json; charset=UTF-8")
-		req.Header.Set("Host","cdn.nba.com")
-		req.Header.Set("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36")
-		req.Header.Set("Connection","keep-alive")
-		req.Header.Set("Cache-Control","max-age=0")
-		req.Header.Set("Accept-Language","en-US,en;q=0.5")
+		req.Header.Set("Host", "cdn.nba.com")
+		req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36")
+		req.Header.Set("Connection", "keep-alive")
+		req.Header.Set("Cache-Control", "max-age=0")
+		req.Header.Set("Accept-Language", "en-US,en;q=0.5")
 		resp, err := client.Do(req)
 		if err != nil {
 			fmt.Println(err)
@@ -59,7 +60,6 @@ var scoreCmd = &cobra.Command{
 			fmt.Println("Error reading body:", err)
 			return
 		}
-		println(resp.Status)
 
 		// UnMarshall json response to ScoreboardResponse object
 		var scoreboardResponse teams.ScoreboardResponse
@@ -69,8 +69,9 @@ var scoreCmd = &cobra.Command{
 			return
 		}
 		// Print scoreboard
-		for i,s:=range scoreboardResponse.Scoreboard.Games{
-			fmt.Printf("%d. %s %d %s %d %d\n", i+1, s.GameCode,s.GameStatus,s.GameStatusText,s.HomeTeam.Score,s.AwayTeam.Score)
+		fmt.Printf("%-3s %-13s %-13s %-11s %-9s\n", "No.", "Home Team", "Away Team", "Game Status", "Scores")
+		for i, s := range scoreboardResponse.Scoreboard.Games {
+			fmt.Printf("%-3d %-13s %-13s %-11s %-4d-%4d\n", i+1, s.HomeTeam.TeamName, s.AwayTeam.TeamName, s.GameStatusText, s.HomeTeam.Score, s.AwayTeam.Score)
 		}
 
 	},
