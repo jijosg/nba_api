@@ -69,9 +69,14 @@ var scoreCmd = &cobra.Command{
 			return
 		}
 		// Print scoreboard
-		fmt.Printf("%-3s %-13s %-13s %-11s %-9s\n", "No.", "Home Team", "Away Team", "Game Status", "Scores")
-		for i, s := range scoreboardResponse.Scoreboard.Games {
-			fmt.Printf("%-3d %-13s %-13s %-11s %-4d-%4d\n", i+1, s.HomeTeam.TeamName, s.AwayTeam.TeamName, s.GameStatusText, s.HomeTeam.Score, s.AwayTeam.Score)
+		if len(scoreboardResponse.Scoreboard.Games) == 0 {
+			fmt.Println("No games today :(")
+			return
+		} else {
+			fmt.Printf("%-3s %-13s %-13s %-11s %-9s\n", "No.", "Home Team", "Away Team", "Game Status", "Scores")
+			for i, s := range scoreboardResponse.Scoreboard.Games {
+				fmt.Printf("%-3d %-13s %-13s %-11s %-4d-%4d\n", i+1, s.HomeTeam.TeamName, s.AwayTeam.TeamName, s.GameStatusText, s.HomeTeam.Score, s.AwayTeam.Score)
+			}
 		}
 
 	},
