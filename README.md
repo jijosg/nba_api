@@ -35,6 +35,17 @@ No. Home Team     Away Team     Game Status Scores
 11  Kings         Warriors      Final       90  - 109
 12  Clippers      Pelicans      Final       119 - 100
 ```
+
+## Get player stats
+```bash
+> nba_api list players -p 2544                                                                              ✔ 
+PLAYER_ID     PLAYER_NAME   TimeFrame     PTS           AST           REB           PIE           
+2544          LeBron James  2021-22       30.3          6.2           8.2           0.18          
+
+> nba_api list players -p 201939                                                                            ✔ 
+PLAYER_ID     PLAYER_NAME   TimeFrame     PTS           AST           REB           PIE           
+201939        Stephen Curry 2021-22       25.5          6.3           5.2           0.155  
+```
 ## List the NBA teams :basketball: :notebook:
 
 ```bash
