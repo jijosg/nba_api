@@ -26,7 +26,7 @@ import (
 var listCmd = &cobra.Command{
 	Use:   "list",
 	Short: "List All NBA Teams",
-	Long: `List All NBA Teams`,
+	Long: `List All NBA Teams that exist today`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("list called")
 		fmt.Printf("%-12s%-14s%-14s%-14s%-15s%-24s%s\n","TEAM_ID","ABBREVIATION","NICKNAME","YEAR_FOUNDED","CITY","FULLNAME","STATE")
