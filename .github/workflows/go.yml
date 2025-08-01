@@ -2,24 +2,38 @@ name: Go
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Set up Go
-      uses: actions/setup-go@v3
-      with:
-        go-version: 1.17
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.17
 
-    - name: Build
-      run: go build -v ./...
+      - name: Build for Linux
+        run: GOOS=linux GOARCH=amd64 go build -o nba_api-linux -v ./...
 
-    - name: Test
-      run: go test -v ./...
+      - name: Build for macOS
+        run: GOOS=darwin GOARCH=amd64 go build -o nba_api-macos -v ./...
+
+      - name: Upload Linux Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: nba_api-linux
+          path: nba_api-linux
+
+      - name: Upload macOS Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: nba_api-macos
+          path: nba_api-macos
+
+      - name: Test
+        run: go test -v ./...

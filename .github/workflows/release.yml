@@ -1,17 +1,21 @@
 # .github/workflows/release.yaml
 
 on:
-  release:
-    types: [created]
+  workflow_dispatch:
 
 jobs:
   release-linux-amd64:
     name: release linux/amd64
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: wangyoucao577/go-release-action@v1.25
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        goos: linux
-        goarch: amd64
+      - uses: actions/checkout@v2
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: linux-amd64-artifact
+          path: ./dist
+      - name: Release artifact
+        uses: wangyoucao577/go-release-action@v1.25
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          files: ./dist/*
