@@ -36,5 +36,5 @@ jobs:
         uses: wangyoucao577/go-release-action@v1.25
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          files: ./dist/*
+          extra_files: ./dist/nba_api-linux
           release_tag: ${{ github.event.inputs.tag }}
