@@ -24,6 +24,9 @@ import (
 
 	"github.com/jijosg/nba_api/pkg/player"
 	"github.com/spf13/cobra"
+
+	// Import rootCmd from parent package
+	. "github.com/jijosg/nba_api/cmd"
 )
 
 var playerID string
