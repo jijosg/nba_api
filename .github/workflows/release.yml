@@ -11,12 +11,24 @@ on:
 
 permissions:
   contents: write
+  # Ensure the tag exists before running GoReleaser
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create tag if not exists
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if ! git rev-parse "refs/tags/${{ github.event.inputs.tag }}" >/dev/null 2>&1; then
+            git tag "${{ github.event.inputs.tag }}"
+            git push origin "${{ github.event.inputs.tag }}"
+          fi
+
       - uses: goreleaser/goreleaser-action@v5
         with:
           version: "~> v2"
