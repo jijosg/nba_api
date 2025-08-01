@@ -17,16 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build
-        run: GOOS=linux GOARCH=amd64 go build -o nba_api-linux -v .
-      - name: Upload Linux Artifact
-        uses: actions/upload-artifact@v4
+      - uses: goreleaser/goreleaser-action@v5
         with:
-          name: linux-amd64-artifact
-          path: nba_api-linux
-      - name: Release artifact
-        uses: wangyoucao577/go-release-action@v1.25
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          extra_files: ./dist/nba_api-linux
-          release_tag: ${{ github.event.inputs.tag }}
+          version: "~> v2"
+          args: release --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
