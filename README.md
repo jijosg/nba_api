@@ -38,14 +38,89 @@ No. Home Team     Away Team     Game Status Scores
 
 ## Get player stats
 ```bash
-> nba_api list players -p 2544                                                                              ✔ 
+> nba_api players -p 2544
 PLAYER_ID     PLAYER_NAME   TimeFrame     PTS           AST           REB           PIE           
 2544          LeBron James  2021-22       30.3          6.2           8.2           0.18          
 
-> nba_api list players -p 201939                                                                            ✔ 
+> nba_api players -p 201939
 PLAYER_ID     PLAYER_NAME   TimeFrame     PTS           AST           REB           PIE           
 201939        Stephen Curry 2021-22       25.5          6.3           5.2           0.155  
 ```
+
+## CLI Commands and Flags
+
+### Team Commands
+
+#### Show Team Info (Root Command)
+
+Show information about a specific NBA team (default: Lakers).
+
+```bash
+nba_api [flags]
+```
+
+**Flags:**
+- `--team string` &nbsp;&nbsp;Specify a team abbreviation to get info (default: `LAL`)
+- `--version` &nbsp;&nbsp;Show version information
+
+**Description:**  
+If run without arguments, shows help and available commands.  
+If run with `--team`, displays information about the specified team.
+
+---
+
+#### List All NBA Teams
+
+List all NBA teams that exist today.
+
+```bash
+nba_api list
+```
+
+**Description:**  
+Displays a table of all NBA teams, including team ID, abbreviation, nickname, year founded, city, full name, and state.
+
+---
+
+### Player Commands
+
+#### Players
+
+Get player info and stats by player ID or search by name.
+
+```bash
+nba_api players [flags]
+```
+
+**Flags:**
+- `-p`, `--playerId string` &nbsp;&nbsp;Player ID to get info (default: `2544`)
+- `-n`, `--name string` &nbsp;&nbsp;Player name to search for (case-insensitive substring match)
+- `-r`, `--recent` &nbsp;&nbsp;Show recent games for the player (shows 5 most recent games)
+
+**Examples:**
+```bash
+nba_api players -p 2544
+nba_api players -n curry
+nba_api players -p 2544 --recent
+```
+
+---
+
+### Score Commands
+
+#### View Today's Scores
+
+Show the scores for today's NBA games.
+
+```bash
+nba_api score
+```
+
+**Description:**  
+Displays a table of today's NBA games, including home team, away team, game status, and scores.  
+If there are no games today, it will display a message indicating so.
+
+---
 ## List the NBA teams :basketball: :notebook:
 
 ```bash
