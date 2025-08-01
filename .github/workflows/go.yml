@@ -20,11 +20,5 @@ jobs:
       - name: Build for Linux
         run: GOOS=linux GOARCH=amd64 go build -o nba_api-linux -v .
 
-      - name: Upload Linux Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: nba_api-linux
-          path: nba_api-linux
-
       - name: Test
         run: go test -v ./...
