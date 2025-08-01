@@ -10,7 +10,7 @@ on:
         type: string
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,17 +21,6 @@ jobs:
         with:
           name: linux-amd64-artifact
           path: nba_api-linux
-  release-linux-amd64:
-    name: release linux/amd64
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - uses: actions/checkout@v4
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: linux-amd64-artifact
-          path: ./dist
       - name: Release artifact
         uses: wangyoucao577/go-release-action@v1.25
         with:
